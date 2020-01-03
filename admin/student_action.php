@@ -147,7 +147,7 @@ if(isset($_POST["action"]))
 				if($statement->execute($data))
 				{
 					$output = array(
-						'success'		=>	'Data Added Successfully',
+						'success'		=>	'Dados adicionados com sucesso!',
 					);
 				}
 			}

@@ -58,11 +58,11 @@ if(isset($_POST["action"]))
 			$status = '';
 			if($row["attendance_status"] == "Present")
 			{
-				$status = '<label class="badge badge-success">Present</label>';
+				$status = '<label class="badge badge-success">Presença Lançada</label>';
 			}
 			if($row["attendance_status"] == "Absent")
 			{
-				$status = '<label class="badge badge-danger">Absent</label>';
+				$status = '<label class="badge badge-danger">Falta</label>';
 			}
 			$sub_array[] = $row["student_name"];
 			$sub_array[] = $row["student_roll_number"];

@@ -131,7 +131,7 @@ if(isset($_GET["action"]))
 			        	<td colspan="2">
 			        		<table width="100%" border="1" cellpadding="5" cellspacing="0">
 			        			<tr>
-			        				<td><b>Lista de Presença Date</b></td>
+			        				<td><b>Data da Lista de Presença</b></td>
 			        				<td><b>Lista de Presença Status</b></td>
 			        			</tr>
 				';

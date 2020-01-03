@@ -37,7 +37,7 @@ foreach($result as $row)
 	if($row["attendance_status"] == "Absent")
 	{
 		$total_absent++;
-		$status = '<span class="badge badge-danger">Absent</span>';
+		$status = '<span class="badge badge-danger">Falta</span>';
 	}
 
 	$output .= '
@@ -112,7 +112,7 @@ foreach($result as $row)
 	function drawChart()
 	{
 		var data = google.visualization.arrayToDataTable([
-			['Lista de Presença Status', 'Percentage'],
+			['Lista de Presença Status', 'Porcentagem'],
 			['Present', <?php echo $present_percentage; ?>],
 			['Absent', <?php echo $absent_percentage; ?>]
 		]);
@@ -120,7 +120,7 @@ foreach($result as $row)
 		var options = {
 			title : 'Overall Lista de Presença Analytics',
 			hAxis : {
-				title: 'Percentage',
+				title: 'Porcentagem',
 		        minValue: 0,
 		        maxValue: 100
 			},

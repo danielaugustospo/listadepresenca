@@ -26,7 +26,7 @@ include('header.php');
               <th>Roll Number</th>
               <th>Grade</th>
               <th>Lista de Presença Status</th>
-              <th>Lista de Presença Date</th>
+              <th>Data da Lista de Presença</th>
               <th>Teacher</th>
             </tr>
           </thead>
@@ -147,7 +147,7 @@ $(document).ready(function(){
 
   $('.input-daterange').datepicker({
     todayBtn: "linked",
-    format: "yyyy-mm-dd",
+    format: "dd-mm-yyyy",
     autoclose: true,
     container: '#formModal modal-body'
   });

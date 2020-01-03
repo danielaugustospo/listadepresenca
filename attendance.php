@@ -27,7 +27,7 @@ include('header.php');
               <th>Roll Number</th>
               <th>Grade</th>
               <th>Lista de Presença Status</th>
-              <th>Lista de Presença Date</th>
+              <th>Data da Lista de Presença</th>
             </tr>
           </thead>
           <tbody>
@@ -94,7 +94,7 @@ $result = $statement->fetchAll();
           </div>
           <div class="form-group">
             <div class="row">
-              <label class="col-md-4 text-right">Lista de Presença Date <span class="text-danger">*</span></label>
+              <label class="col-md-4 text-right">Data da Lista de Presença <span class="text-danger">*</span></label>
               <div class="col-md-8">
                 <input type="text" name="attendance_date" id="attendance_date" class="form-control" readonly />
                 <span id="error_attendance_date" class="text-danger"></span>
@@ -108,8 +108,8 @@ $result = $statement->fetchAll();
                   <tr>
                     <th>Roll No.</th>
                     <th>Nome</th>
-                    <th>Present</th>
-                    <th>Absent</th>
+                    <th>Presença</th>
+                    <th>Falta</th>
                   </tr>
                 </thead>
                 <?php
@@ -206,7 +206,7 @@ $(document).ready(function(){
   });
 
   $('#attendance_date').datepicker({
-    format:'yyyy-mm-dd',
+    format:'dd-mm-yyyy',
     autoclose:true,
     container: '#formModal modal-body'
   });
@@ -262,7 +262,7 @@ $(document).ready(function(){
 
   $('.input-daterange').datepicker({
     todayBtn:"linked",
-    format:"yyyy-mm-dd",
+    format:"dd-mm-yyyy",
     autoclose:true,
     container: '#formModal modal-body'
   });

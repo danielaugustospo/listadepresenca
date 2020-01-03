@@ -24,7 +24,7 @@ include('header.php');
               <th>Nome Pessoa</th>
               <th>Número Linha</th>
               <th>Grade</th>
-              <th>Lista de Presença Percentage</th>
+              <th>Lista de Presença Porcentagem</th>
               <th>Report</th>
             </tr>
           </thead>
@@ -100,7 +100,7 @@ $(document).ready(function(){
 
   $('.input-daterange').datepicker({
     todayBtn:"linked",
-    format:"yyyy-mm-dd",
+    format:"dd-mm-yyyy",
     autoclose:true,
     container: '#formModal modal-body'
   });

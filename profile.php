@@ -326,7 +326,7 @@ $('#teacher_id').val("<?php echo $row["teacher_id"];?>");
 ?>
   
   	$('#teacher_doj').datepicker({
-  		format: "yyyy-mm-dd",
+  		format: "dd-mm-yyyy",
     	autoclose: true
   	});
 

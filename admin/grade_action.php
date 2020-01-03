@@ -95,7 +95,7 @@ if(isset($_POST["action"]))
 					if($statement->rowCount() > 0)
 					{
 						$output = array(
-							'success'		=>	'Data Added Successfully',
+							'success'		=>	'Dados adicionados com sucesso!',
 						);
 					}
 					else

@@ -57,12 +57,12 @@ if(isset($_POST["action"]))
 			$status = '';
 			if($row["attendance_status"] == "Present")
 			{
-				$status = '<label class="badge badge-success">Present</label>';
+				$status = '<label class="badge badge-success">Presença Lançada</label>';
 			}
 
 			if($row["attendance_status"] == "Absent")
 			{
-				$status = '<label class="badge badge-danger">Absent</label>';
+				$status = '<label class="badge badge-danger">Falta</label>';
 			}
 
 			$sub_array[] = $row["student_name"];
@@ -90,7 +90,7 @@ if(isset($_POST["action"]))
 		$error = 0;
 		if(empty($_POST["attendance_date"]))
 		{
-			$error_attendance_date = 'Lista de Presença Date is required';
+			$error_attendance_date = 'Data da Lista de Presença is required';
 			$error++;
 		}
 		else
@@ -142,7 +142,7 @@ if(isset($_POST["action"]))
 					$statement->execute($data);
 				}
 				$output = array(
-					'success'		=>	'Data Added Successfully',
+					'success'		=>	'Dados adicionados com sucesso!',
 				);
 			}
 		}

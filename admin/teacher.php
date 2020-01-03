@@ -227,7 +227,7 @@ $(document).ready(function(){
 	});
 
   $('#teacher_doj').datepicker({
-        format: "yyyy-mm-dd",
+        format: "dd-mm-yyyy",
         autoclose: true,
         container: '#formModal modal-body'
     });

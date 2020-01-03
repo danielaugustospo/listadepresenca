@@ -161,7 +161,7 @@ $(document).ready(function(){
 	});
 
 	$('#student_dob').datepicker({
-		format:"yyyy-mm-dd",
+		format:"dd-mm-yyyy",
 		autoclose: true,
         container: '#formModal modal-body'
 	});
