@@ -27,7 +27,7 @@ if(isset($_SESSION["admin_id"]))
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>Sistema de Lista de Presença</h1>
+  <h1>Sistema de Gestão de Obreiros</h1>
 </div>
 
 
@@ -42,12 +42,12 @@ if(isset($_SESSION["admin_id"]))
         <div class="card-body">
           <form method="post" id="admin_login_form">
             <div class="form-group">
-              <label>Enter Username</label>
+              <label>Login Administrador</label>
               <input type="text" name="admin_user_name" id="admin_user_name" class="form-control" />
               <span id="error_admin_user_name" class="text-danger"></span>
             </div>
             <div class="form-group">
-              <label>Enter Password</label>
+              <label>Senha Administrador</label>
               <input type="password" name="admin_password" id="admin_password" class="form-control" />
               <span id="error_admin_password" class="text-danger"></span>
             </div>
@@ -55,6 +55,8 @@ if(isset($_SESSION["admin_id"]))
               <input type="submit" name="admin_login" id="admin_login" class="btn btn-info" value="Login" />
             </div>
           </form>
+          <label align="center" for=""><a href="../login.php">Ir para área de secretariado</a>  </label>
+
         </div>
       </div>
     </div>
@@ -77,7 +79,7 @@ $(document).ready(function(){
       data:$(this).serialize(),
       dataType:"json",
       beforeSend:function(){
-        $('#admin_login').val('Validate...');
+        $('#admin_login').val('Validando...');
         $('#admin_login').attr('disabled', 'disabled');
       },
       success:function(data)

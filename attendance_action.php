@@ -5,6 +5,7 @@
 include('admin/database_connection.php');
 
 session_start();
+$status = 0;
 
 if(isset($_POST["action"]))
 {
@@ -54,15 +55,18 @@ if(isset($_POST["action"]))
 		foreach($result as $row)
 		{
 			$sub_array = array();
-			$status = '';
 			if($row["attendance_status"] == "Present")
 			{
-				$status = '<label class="badge badge-success">Presença Lançada</label>';
+				$status = '<label class="badge badge-success">Presença Lançada</label>'; 
 			}
 
 			if($row["attendance_status"] == "Absent")
 			{
-				$status = '<label class="badge badge-danger">Falta</label>';
+				$status = '<label class="badge badge-danger">Falta</label>'; 
+			}
+			if($row["attendance_status"] == "AbsentJ")
+			{
+				$status = '<label class="badge badge-warning">Falta Justificada</label>'; 
 			}
 
 			$sub_array[] = $row["student_name"];
@@ -90,7 +94,7 @@ if(isset($_POST["action"]))
 		$error = 0;
 		if(empty($_POST["attendance_date"]))
 		{
-			$error_attendance_date = 'Data da Lista de Presença is required';
+			$error_attendance_date = 'Informe a Data da Lista de Presença';
 			$error++;
 		}
 		else
@@ -146,7 +150,7 @@ if(isset($_POST["action"]))
 				);
 			}
 		}
-		echo json_encode($output);
+		echo json_encode($output, JSON_UNESCAPED_UNICODE);
 	}
 
 	if($_POST["action"] == "index_fetch")

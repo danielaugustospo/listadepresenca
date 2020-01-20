@@ -14,21 +14,22 @@ if(!isset($_SESSION["teacher_id"]))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sistema de Lista de Presença in PHP using Ajax</title>
+  <title>Sistema de Lista de Presença de Obreiros</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
-  <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.min.js"></script> 
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.dataTables.min.js"></script>
   <script src="js/dataTables.bootstrap4.min.js"></script>
+
 </head>
 <body>
 
 <div class="jumbotron-small text-center" style="margin-bottom:0">
-  <h1>Sistema de Lista de Presença</h1>
+  <h1>Sistema de Gestão de Obreiros</h1>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">

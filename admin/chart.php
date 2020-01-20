@@ -6,8 +6,10 @@ include('header.php');
 
 $present_percentage = 0;
 $absent_percentage = 0;
+$absentj_percentage = 0;
 $total_present = 0;
 $total_absent = 0;
+$total_absentj = 0;
 $output = "";
 
 $query = "
@@ -31,13 +33,18 @@ foreach($result as $row)
 	if($row["attendance_status"] == "Present")
 	{
 		$total_present++;
-		$status = '<span class="badge badge-success">Present</span>';
+		$status = '<span class="badge badge-success">Presente</span>';
 	}
 
 	if($row["attendance_status"] == "Absent")
 	{
 		$total_absent++;
 		$status = '<span class="badge badge-danger">Falta</span>';
+	}
+	if($row["attendance_status"] == "AbsentJ")
+	{
+		$total_absentj++;
+		$status = '<span class="badge badge-warning">Falta Justificada</span>';
 	}
 
 	$output .= '
@@ -49,6 +56,7 @@ foreach($result as $row)
 
 	$present_percentage = ($total_present/$total_row) * 100;
 	$absent_percentage = ($total_absent/$total_row) * 100;
+	$absentj_percentage = ($total_absentj/$total_row) * 100;
 
 }
 
@@ -66,16 +74,16 @@ foreach($result as $row)
             <td><?php echo Get_student_name($connect, $_GET["student_id"]); ?></td>
           </tr>
           <tr>
-            <th>Grade</th>
+            <th>Região</th>
             <td><?php echo Get_student_grade_name($connect, $_GET["student_id"]); ?></td>
           </tr>
           <tr>
-            <th>Teacher Name</th>
+            <th>Analista Responsável</th>
             <td><?php echo Get_student_teacher_name($connect, $_GET["student_id"]); ?></td>
           </tr>
           <tr>
-            <th>Time Period</th>
-            <td><?php echo $_GET["from_date"] . ' to '. $_GET["to_date"]; ?></td>
+            <th>Intervalo de tempo</th>
+            <td><?php echo $_GET["from_date"] . ' até '. $_GET["to_date"]; ?></td>
           </tr>
         </table>
 
@@ -113,8 +121,9 @@ foreach($result as $row)
 	{
 		var data = google.visualization.arrayToDataTable([
 			['Lista de Presença Status', 'Porcentagem'],
-			['Present', <?php echo $present_percentage; ?>],
-			['Absent', <?php echo $absent_percentage; ?>]
+			['Presença', <?php echo $present_percentage; ?>],
+			['Falta', <?php echo $absent_percentage; ?>],
+			['Falta Justificada', <?php echo $absentj_percentage; ?>],
 		]);
 
 		var options = {

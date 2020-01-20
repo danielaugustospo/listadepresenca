@@ -22,11 +22,11 @@ include('header.php');
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Roll Number</th>
-              <th>Grade</th>
-              <th>Teacher</th>
+              <th>Sexo</th>
+              <th>Região</th>
+              <th>Analista Responsável</th>
               <th>Lista de Presença Porcentagem</th>
-              <th>Report</th>
+              <th>Relatório</th>
             </tr>
           </thead>
           <tbody>
@@ -57,7 +57,7 @@ include('header.php');
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Make Report</h4>
+        <h4 class="modal-title">Gerar Relatório</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -65,8 +65,8 @@ include('header.php');
       <div class="modal-body">
         <div class="form-group">
           <select name="report_action" id="report_action" class="form-control">
-            <option value="pdf_report">PDF Report</option>
-            <option value="chart_report">Chart Report</option>
+            <option value="pdf_report">Gerar Relatório PDF</option>
+            <option value="chart_report">Gerar Gráfico</option>
           </select>
         </div>
         <div class="form-group">
@@ -82,7 +82,7 @@ include('header.php');
       <!-- Modal footer -->
       <div class="modal-footer">
         <input type="hidden" name="student_id" id="student_id" />
-        <button type="button" name="create_report" id="create_report" class="btn btn-success btn-sm">Create Report</button>
+        <button type="button" name="create_report" id="create_report" class="btn btn-success btn-sm">Criar Relatório</button>
         <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
       </div>
 
@@ -106,7 +106,7 @@ $(document).ready(function(){
 
    $('.input-daterange').datepicker({
     todayBtn:"linked",
-    format:'dd-mm-yyyy',
+    format:'yyyy-mm-dd',
     autoclose:true,
     container: '#formModal modal-body'
    });

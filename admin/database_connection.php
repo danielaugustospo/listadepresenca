@@ -3,9 +3,10 @@
 //database_connection.php
 
 $connect = new PDO("mysql:host=localhost;dbname=attendance","root","");
+// $connect = new PDO("mysql:host=sql311.byethost.com;dbname=b33_24833730_attendance","b33_24833730","8523654*da");
 
-// $base_url = "http://localhost:8080/listapresenca/";
-$base_url = "http://localhost:8080/listapresenca/";
+$base_url = "http://localhost:8080/listapresenca2/";
+// $base_url = "http://danieltech.byethost33.com/sites/listapresenca/";
 
 function get_total_records($connect, $table_name)
 {

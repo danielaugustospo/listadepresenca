@@ -28,7 +28,7 @@ if(isset($_SESSION["teacher_id"]))
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>Sistema de Lista de Presença</h1>
+  <h1>Sistema de Gestão de Obreiros</h1>
 </div>
 
 
@@ -39,16 +39,16 @@ if(isset($_SESSION["teacher_id"]))
     </div>
     <div class="col-md-4" style="margin-top:20px;">
       <div class="card">
-        <div class="card-header">Teacher Login</div>
+        <div class="card-header">Login - Gestão de Presenças</div>
         <div class="card-body">
           <form method="post" id="teacher_login_form">
             <div class="form-group">
-              <label>Enter Email Address</label>
+              <label>Insira o email cadastrado</label>
               <input type="text" name="teacher_emailid" id="teacher_emailid" class="form-control" />
               <span id="error_teacher_emailid" class="text-danger"></span>
             </div>
             <div class="form-group">
-              <label>Enter Password</label>
+              <label>Insira a senha</label>
               <input type="password" name="teacher_password" id="teacher_password" class="form-control" />
               <span id="error_teacher_password" class="text-danger"></span>
             </div>
@@ -56,11 +56,12 @@ if(isset($_SESSION["teacher_id"]))
               <input type="submit" name="teacher_login" id="teacher_login" class="btn btn-info" value="Login" />
             </div>
           </form>
+          <label align="center" for=""><a href="admin/">Ir para área administrativa</a>  </label>
+
         </div>
       </div>
     </div>
     <div class="col-md-4">
-
     </div>
   </div>
 </div>
@@ -78,7 +79,7 @@ $(document).ready(function(){
       data:$(this).serialize(),
       dataType:"json",
       beforeSend:function(){
-        $('#teacher_login').val('Validate...');
+        $('#teacher_login').val('Validando...');
         $('#teacher_login').attr('disabled','disabled');
       },
       success:function(data)

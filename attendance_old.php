@@ -1,5 +1,3 @@
-<script src="script.js"></script> 
-
 <?php
 
 //attendance.php
@@ -14,8 +12,8 @@ include('header.php');
       <div class="row">
         <div class="col-md-9">Lista de Presença</div>
         <div class="col-md-3" align="right">
-          <button type="button" id="report_button" class="btn btn-secondary btn-sm">Exportar dados</button>
-          <button type="button" id="add_button" class="btn btn-info btn-sm">Nova Lista de Presença</button>
+          <button type="button" id="report_button" class="btn btn-danger btn-sm">Report</button>
+          <button type="button" id="add_button" class="btn btn-info btn-sm">Add</button>
         </div>
       </div>
     </div>
@@ -25,11 +23,11 @@ include('header.php');
         <table class="table table-striped table-bordered" id="attendance_table">
           <thead>
             <tr>
-              <th>Nomes</th>
-              <th>Sexo</th>
-              <th>Região</th>
+              <th>Nome</th>
+              <th>Roll Number</th>
+              <th>Grade</th>
               <th>Lista de Presença Status</th>
-              <th>Data da Lista de Presença</th>
+              <th>Lista de Presença Date</th>
             </tr>
           </thead>
           <tbody>
@@ -86,7 +84,7 @@ $result = $statement->fetchAll();
           ?>
           <div class="form-group">
             <div class="row">
-              <label class="col-md-4 text-right">Região <span class="text-danger">*</span></label>
+              <label class="col-md-4 text-right">Grade <span class="text-danger">*</span></label>
               <div class="col-md-8">
                 <?php
                 echo '<label>'.$row["grade_name"].'</label>';
@@ -96,7 +94,7 @@ $result = $statement->fetchAll();
           </div>
           <div class="form-group">
             <div class="row">
-              <label class="col-md-4 text-right">Data da Lista de Presença <span class="text-danger">*</span></label>
+              <label class="col-md-4 text-right">Lista de Presença Date <span class="text-danger">*</span></label>
               <div class="col-md-8">
                 <input type="text" name="attendance_date" id="attendance_date" class="form-control" readonly />
                 <span id="error_attendance_date" class="text-danger"></span>
@@ -105,13 +103,13 @@ $result = $statement->fetchAll();
           </div>
           <div class="form-group" id="student_details">
             <div class="table-responsive">
-              <table class="table table-striped table-bordered" id="tabela">
+              <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th>Nome <br> <input type="text" id="txtColuna1"/> </th>
-                    <th>Presença</th>
-                    <th>Falta</th>
-                    <th>Falta Justificada</th>
+                    <th>Roll No.</th>
+                    <th>Nome</th>
+                    <th>Present</th>
+                    <th>Absent</th>
                   </tr>
                 </thead>
                 <?php
@@ -126,6 +124,7 @@ $result = $statement->fetchAll();
                 {
                 ?>
                   <tr>
+                    <td><?php echo $student["student_roll_number"]; ?></td>
                     <td>
                       <?php echo $student["student_name"]; ?>
                       <input type="hidden" name="student_id[]" value="<?php echo $student["student_id"]; ?>" />
@@ -135,9 +134,6 @@ $result = $statement->fetchAll();
                     </td>
                     <td>
                       <input type="radio" name="attendance_status<?php echo $student["student_id"]; ?>" checked value="Absent" />
-                    </td>
-                    <td>
-                      <input type="radio" name="attendance_status<?php echo $student["student_id"]; ?>" value="AbsentJ" />
                     </td>
                   </tr>
                 <?php
@@ -155,7 +151,7 @@ $result = $statement->fetchAll();
         <div class="modal-footer">
           <input type="hidden" name="action" id="action" value="Add" />
           <input type="submit" name="button_action" id="button_action" class="btn btn-success btn-sm" value="Add" />
-          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
         </div>
 
       </div>
@@ -177,18 +173,18 @@ $result = $statement->fetchAll();
       <div class="modal-body">
         <div class="form-group">
           <div class="input-daterange">
-            <input type="text" name="from_date" id="from_date" class="form-control" placeholder="Data inicial" readonly />
+            <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" readonly />
             <span id="error_from_date" class="text-danger"></span>
             <br />
-            <input type="text" name="to_date" id="to_date" class="form-control" placeholder="Até a data" readonly />
+            <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" readonly />
             <span id="error_to_date" class="text-danger"></span>
           </div>
         </div>
       </div>
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" name="create_report" id="create_report" class="btn btn-success btn-sm">Gerar Relatório</button>
-        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>
+        <button type="button" name="create_report" id="create_report" class="btn btn-success btn-sm">Create Report</button>
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
       </div>
 
     </div>
@@ -209,7 +205,6 @@ $(document).ready(function(){
     }
   });
 
-
   $('#attendance_date').datepicker({
     format:'yyyy-mm-dd',
     autoclose:true,
@@ -223,7 +218,7 @@ $(document).ready(function(){
   }
 
   $('#add_button').click(function(){
-    $('#modal_title').text("Nova Lista de Presença");
+    $('#modal_title').text("Add Lista de Presença");
     $('#formModal').modal('show');
     clear_field();
   });
@@ -236,7 +231,7 @@ $(document).ready(function(){
       data:$(this).serialize(),
       dataType:"json",
       beforeSend:function(){
-        $('#button_action').val('Validando...');
+        $('#button_action').val('Validate...');
         $('#button_action').attr('disabled', 'disabled');
       },
       success:function(data)
@@ -312,8 +307,3 @@ $(document).ready(function(){
 
 });
 </script>
-
-
-
-
-

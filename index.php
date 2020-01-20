@@ -10,7 +10,7 @@ include('header.php');
   <div class="card">
   	<div class="card-header">
       <div class="row">
-        <div class="col-md-9">Status Geral de Presença de Aluno</div>
+        <div class="col-md-9">Panorama Geral de Presenças</div>
         <div class="col-md-3" align="right">
           
         </div>
@@ -21,11 +21,11 @@ include('header.php');
         <table class="table table-striped table-bordered" id="student_table">
           <thead>
             <tr>
-              <th>Nome Pessoa</th>
-              <th>Número Linha</th>
-              <th>Grade</th>
-              <th>Lista de Presença Porcentagem</th>
-              <th>Report</th>
+              <th>Nome Obreiro(a)</th>
+              <th>Sexo</th>
+              <th>Região</th>
+              <th>Porcentagem de Presença</th>
+              <th>Exportar</th>
             </tr>
           </thead>
           <tbody>
@@ -100,7 +100,7 @@ $(document).ready(function(){
 
   $('.input-daterange').datepicker({
     todayBtn:"linked",
-    format:"dd-mm-yyyy",
+    format:"yyyy-mm-dd",
     autoclose:true,
     container: '#formModal modal-body'
   });

@@ -12,7 +12,7 @@ include('header.php');
       <div class="row">
         <div class="col-md-9">Lista de Cadastrados</div>
         <div class="col-md-3" align="right">
-        	<button type="button" id="add_button" class="btn btn-info btn-sm">Add</button>
+        	<button type="button" id="add_button" class="btn btn-info btn-sm">Adicionar</button>
         </div>
       </div>
     </div>
@@ -23,11 +23,11 @@ include('header.php');
   				<thead>
   					<tr>
   						<th>Nome</th>
-  						<th>Roll No.</th>
+  						<th>Sexo</th>
   						<th>Data de Nascimento</th>
-              			<th>Grade</th>
-  						<th>Edit</th>
-  						<th>Delete</th>
+              			<th>Região</th>
+  						<th>Editar</th>
+  						<th>Deletar</th>
   					</tr>
   				</thead>
   				<tbody>
@@ -76,9 +76,10 @@ include('header.php');
           </div>
           <div class="form-group">
             <div class="row">
-              <label class="col-md-4 text-right">Roll No. <span class="text-danger">*</span></label>
+              <label class="col-md-4 text-right">Sexo <span class="text-danger">*</span></label>
               <div class="col-md-8">
-                <input type="text" name="student_roll_number" id="student_roll_number" class="form-control" />
+                <input type="radio" value="Masculino" name="student_roll_number" id="student_roll_number" checked class="form-control" /><label>Masculino</label>
+                <input type="radio" value="Feminino" name="student_roll_number" id="student_roll_number" class="form-control" /><label>Feminino</label>
                 <span id="error_student_roll_number" class="text-danger"></span>
               </div>
             </div>
@@ -94,10 +95,10 @@ include('header.php');
           </div>
           <div class="form-group">
             <div class="row">
-              <label class="col-md-4 text-right">Grade <span class="text-danger">*</span></label>
+              <label class="col-md-4 text-right">Região <span class="text-danger">*</span></label>
               <div class="col-md-8">
                 <select name="student_grade_id" id="student_grade_id" class="form-control">
-                  <option value="">Select Grade</option>
+                  <option value="">Selecione a região</option>
                   <?php
                   echo load_grade_list($connect);
                   ?>
@@ -127,13 +128,13 @@ include('header.php');
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Delete Confirmation</h4>
+        <h4 class="modal-title">Confirmar Exclusão</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <h3 align="center">Are you sure you want to remove this?</h3>
+        <h3 align="center">Tem certeza de que deseja remover isso?</h3>
       </div>
 
       <!-- Modal footer -->
@@ -161,7 +162,7 @@ $(document).ready(function(){
 	});
 
 	$('#student_dob').datepicker({
-		format:"dd-mm-yyyy",
+		format:"yyyy-mm-dd",
 		autoclose: true,
         container: '#formModal modal-body'
 	});
@@ -176,7 +177,7 @@ $(document).ready(function(){
 	}
 
 	$('#add_button').click(function(){
-		$('#modal_title').text('Add Student');
+		$('#modal_title').text('Adicionar Obreiro');
 		$('#button_action').val('Add');
 		$('#action').val('Add');
 		$('#formModal').modal('show');
@@ -191,7 +192,7 @@ $(document).ready(function(){
 			data:$(this).serialize(),
 			dataType:"json",
 			beforeSend:function(){
-				$('#button_action').val('Validate...');
+				$('#button_action').val('Validando...');
 				$('#button_action').attr('disabled', 'disabled');
 			},
 			success:function(data)

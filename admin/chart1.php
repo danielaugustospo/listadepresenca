@@ -6,8 +6,10 @@ include('header.php');
 
 $present_percentage = 0;
 $absent_percentage = 0;
+$absentj_percentage = 0;
 $total_present = 0;
 $total_absent = 0;
+$total_absentj = 0;
 $output = "";
 
 $query = "
@@ -33,7 +35,7 @@ foreach($result as $row)
 	if($row["attendance_status"] == "Present")
 	{
 		$total_present++;
-		$status = '<span class="badge badge-success">Present</span>';
+		$status = '<span class="badge badge-success">Presente</span>';
 	}
 
 	if($row["attendance_status"] == "Absent")
@@ -41,10 +43,15 @@ foreach($result as $row)
 		$total_absent++;
 		$status = '<span class="badge badge-danger">Falta</span>';
 	}
+	if($row["attendance_status"] == "AbsentJ")
+	{
+		$total_absentj++;
+		$status = '<span class="badge badge-warning">Falta Justificada</span>';
+	}
 	$output .= '
 		<tr>
 			<td>'.$row["student_name"].'</td>
-			<td>'.$status.'</td>
+			<td>'.$status.'</td> 
 		</tr>
 	';
 }
@@ -53,6 +60,7 @@ if($total_row > 0)
 {
 	$present_percentage = ($total_present / $total_row) * 100;
 	$absent_percentage = ($total_absent / $total_row) * 100;
+	$absentj_percentage = ($total_absentj / $total_row) * 100;
 }
 
 ?>
@@ -64,7 +72,7 @@ if($total_row > 0)
       <div class="table-responsive">
         <table class="table table-bordered table-striped">
           <tr>
-            <th>Grade Name</th>
+            <th>Região</th>
             <td><?php echo Get_grade_name($connect, $_GET["grade_id"]); ?></td>
           </tr>
           <tr>
@@ -84,7 +92,7 @@ if($total_row > 0)
             <th>Lista de Presença Status</th>
           </tr>
           <?php 
-          echo $output;
+          echo $output; 
           ?>
       </table></div>
   	</div>
@@ -103,12 +111,14 @@ if($total_row > 0)
   {
     var data = google.visualization.arrayToDataTable([
       ['Lista de Presença Status', 'Porcentagem'],
-      ['Present', <?php echo $present_percentage; ?>],
-      ['Absent', <?php echo $absent_percentage; ?>]
+      ['Presença', <?php echo $present_percentage; ?>],
+      ['Falta', <?php echo $absent_percentage; ?>],
+      ['Falta Justificada', <?php echo $absentj_percentage; ?>]
+
     ]);
 
     var options = {
-      title: 'Overall Lista de Presença Analytics',
+      title: 'Análise Geral da Lista de Presença',
       hAxis: {
         title: 'Porcentagem',
         minValue: 0,

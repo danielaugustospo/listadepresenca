@@ -204,7 +204,7 @@ $result = $statement->fetchAll();
 		<div class="card-body">
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Teacher Name <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Nome <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<input type="text" name="teacher_name" id="teacher_name" class="form-control" />
 						<span class="text-danger"><?php echo $error_teacher_name; ?></span>
@@ -213,7 +213,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Address <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Endereço <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<textarea name="teacher_address" id="teacher_address" class="form-control"></textarea>
 						<span class="text-danger"><?php echo $error_teacher_address; ?></span>
@@ -222,7 +222,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Email Address <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Email <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<input type="text" name="teacher_emailid" id="teacher_emailid" class="form-control" />
 						<span class="text-danger"><?php echo $error_teacher_emailid; ?></span>
@@ -231,7 +231,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Password <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Senha <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<input type="password" name="teacher_password" id="teacher_password" class="form-control" placeholder="Leave blank to not change it" />
 						<span class="text-danger"></span>
@@ -240,7 +240,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Qualification <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Posição <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<input type="text" name="teacher_qualification" id="teacher_qualification" class="form-control" />
 						<span class="text-danger"><?php echo $error_teacher_qualification; ?></span>
@@ -249,7 +249,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Grade <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Região <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<select name="teacher_grade_id" id="teacher_grade_id" class="form-control">
                 			<option value="">Select Grade</option>
@@ -263,7 +263,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Date of Joining <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Date de Início de Obra <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<input type="text" name="teacher_doj" id="teacher_doj" class="form-control" readonly />
 						<span class="text-danger"><?php echo $error_teacher_doj; ?></span>
@@ -272,7 +272,7 @@ $result = $statement->fetchAll();
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<label class="col-md-4 text-right">Image <span class="text-danger">*</span></label>
+					<label class="col-md-4 text-right">Foto <span class="text-danger">*</span></label>
 					<div class="col-md-8">
 						<input type="file" name="teacher_image" id="teacher_image" />
 						<span class="text-muted">Only .jpg and .png allowed</span><br />
@@ -326,7 +326,7 @@ $('#teacher_id').val("<?php echo $row["teacher_id"];?>");
 ?>
   
   	$('#teacher_doj').datepicker({
-  		format: "dd-mm-yyyy",
+  		format: "yyyy-mm-dd",
     	autoclose: true
   	});
 

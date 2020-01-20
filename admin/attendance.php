@@ -10,10 +10,10 @@ include('header.php');
   <div class="card">
   	<div class="card-header">
       <div class="row">
-        <div class="col-md-9">Lista de Presença List</div>
+        <div class="col-md-9">Lista de Presença - Relatório</div>
         <div class="col-md-3" align="right">
-          <button type="button" id="chart_button" class="btn btn-primary btn-sm">Chart</button>
-          <button type="button" id="report_button" class="btn btn-danger btn-sm">Report</button>
+          <button type="button" id="chart_button" class="btn btn-primary btn-sm">Análise Gráfica</button>
+          <button type="button" id="report_button" class="btn btn-danger btn-sm">Relatório</button>
         </div>
       </div>
     </div>
@@ -23,11 +23,11 @@ include('header.php');
           <thead>
             <tr>
               <th>Nome</th>
-              <th>Roll Number</th>
-              <th>Grade</th>
+              <th>Sexo</th>
+              <th>Região</th>
               <th>Lista de Presença Status</th>
               <th>Data da Lista de Presença</th>
-              <th>Teacher</th>
+              <th>Analista Responsável</th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +66,7 @@ include('header.php');
       <div class="modal-body">
         <div class="form-group">
           <select name="grade_id" id="grade_id" class="form-control">
-            <option value="">Select Grade</option>
+            <option value="">Selecione a região</option>
             <?php
             echo load_grade_list($connect);
             ?>
@@ -107,7 +107,7 @@ include('header.php');
       <div class="modal-body">
         <div class="form-group">
           <select name="chart_grade_id" id="chart_grade_id" class="form-control">
-            <option value="">Select Grade</option>
+            <option value="">Select o sexo</option>
             <?php
             echo load_grade_list($connect);
             ?>
@@ -147,7 +147,7 @@ $(document).ready(function(){
 
   $('.input-daterange').datepicker({
     todayBtn: "linked",
-    format: "dd-mm-yyyy",
+    format: "yyyy-mm-dd",
     autoclose: true,
     container: '#formModal modal-body'
   });
@@ -164,7 +164,7 @@ $(document).ready(function(){
 
     if(grade_id == '')
     {
-      $('#error_grade_id').text('Grade is Required');
+      $('#error_grade_id').text('Informe a região');
       error++;
     }
     else
@@ -214,7 +214,7 @@ $(document).ready(function(){
     var error = 0;
     if(grade_id == '')
     {
-      $('#error_chart_grade_id').text('Grade is Required');
+      $('#error_chart_grade_id').text('Informe a região');
       error++;
     }
     else

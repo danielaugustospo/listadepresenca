@@ -163,7 +163,7 @@ if(isset($_POST["action"]))
 		}
 		if(empty($_POST["teacher_grade_id"]))
 		{
-			$error_teacher_grade_id = "Grade is required";
+			$error_teacher_grade_id = "Informe a região";
 			$error++;
 		}
 		else
@@ -320,7 +320,7 @@ if(isset($_POST["action"]))
 							<td>'.$row["teacher_doj"].'</td>
 						</tr>
 						<tr>
-							<th>Grade</th>
+							<th>Região</th>
 							<td>'.$row["grade_name"].'</td>
 						</tr>
 					</table>

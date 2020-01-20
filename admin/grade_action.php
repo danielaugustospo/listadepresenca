@@ -60,7 +60,7 @@ if(isset($_POST["action"]))
 		$error = 0;
 		if(empty($_POST["grade_name"]))
 		{
-			$error_grade_name = 'Grade Name is required';
+			$error_grade_name = 'Nome da região é obrigatório!';
 			$error++;
 		}
 		else
@@ -102,7 +102,7 @@ if(isset($_POST["action"]))
 					{
 						$output = array(
 							'error'					=>	true,
-							'error_grade_name'		=>	'Grade Name Already Exists'
+							'error_grade_name'		=>	'Região já cadastrada'
 						);
 					}
 				}
@@ -123,7 +123,7 @@ if(isset($_POST["action"]))
 				if($statement->execute($data))
 				{
 					$output = array(
-						'success'		=>	'Data Updated Successfully',
+						'success'		=>	'Dados atualizados com sucesso',
 					);
 				}
 			}
@@ -156,7 +156,7 @@ if(isset($_POST["action"]))
 		$statement = $connect->prepare($query);
 		if($statement->execute())
 		{
-			echo 'Data Deleted Successfully';
+			echo 'Dados excluídos com êxito!';
 		}
 	}
 

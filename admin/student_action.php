@@ -92,7 +92,7 @@ if(isset($_POST["action"]))
 		}
 		if(empty($_POST["student_roll_number"]))
 		{
-			$error_student_roll_number = 'Student Roll Number is required';
+			$error_student_roll_number = 'Informe o sexo';
 			$error++;
 		}
 		else
@@ -110,7 +110,7 @@ if(isset($_POST["action"]))
 		}
 		if(empty($_POST["student_grade_id"]))
 		{
-			$error_student_grade_id = "Grade is required";
+			$error_student_grade_id = "Informe a região";
 			$error++;
 		}
 		else

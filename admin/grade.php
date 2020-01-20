@@ -22,7 +22,7 @@ include('header.php');
         <table class="table table-striped table-bordered" id="grade_table">
           <thead>
             <tr>
-              <th>Grade Name</th>
+              <th>Região</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -82,13 +82,13 @@ include('header.php');
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Delete Confirmation</h4>
+        <h4 class="modal-title">Confirmar Exclusão</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <h3 align="center">Are you sure you want to remove this?</h3>
+        <h3 align="center">Tem certeza de que deseja remover isso?</h3>
       </div>
 
       <!-- Modal footer -->
@@ -147,7 +147,7 @@ $(document).ready(function(){
       beforeSend:function()
       {
         $('#button_action').attr('disabled', 'disabled');
-        $('#button_action').val('Validate...');
+        $('#button_action').val('Validando...');
       },
       success:function(data)
       {

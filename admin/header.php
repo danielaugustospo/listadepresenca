@@ -36,7 +36,7 @@ if(!isset($_SESSION["admin_id"]))
 <body>
 
 <div class="jumbotron-small text-center" style="margin-bottom:0">
-  <h1>Sistema de Lista de Presença</h1>
+  <h1>Sistema de Gestão de Obreiros</h1>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -47,20 +47,20 @@ if(!isset($_SESSION["admin_id"]))
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="grade.php">Grade</a>
+        <a class="nav-link" href="grade.php">Região</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="teacher.php">Teacher</a>
+        <a class="nav-link" href="teacher.php">Analistas Responsáveis</a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="student.php">Student</a>
+        <a class="nav-link" href="student.php">Obreiros</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="attendance.php">Lista de Presença</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
+        <a class="nav-link" href="logout.php">Encerrar Sessao</a>
       </li>  
     </ul>
   </div>  

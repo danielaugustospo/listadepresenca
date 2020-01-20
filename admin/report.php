@@ -31,7 +31,7 @@ if(isset($_GET["action"]))
 				
 				</style>
 				<p>&nbsp;</p>
-				<h3 align="center">Lista de Presença Report</h3><br />';
+				<h3 align="center">Lista de Presença - Relatório</h3><br />';
 			foreach($result as $row)
 			{
 				$output .= '
@@ -44,8 +44,8 @@ if(isset($_GET["action"]))
 			        		<table width="100%" border="1" cellpadding="5" cellspacing="0">
 			        			<tr>
 			        				<td><b>Nome</b></td>
-			        				<td><b>Roll Number</b></td>
-			        				<td><b>Grade</b></td>
+			        				<td><b>Sexo</b></td>
+			        				<td><b>Região</b></td>
 			        				<td><b>Teacher</b></td>
 			        				<td><b>Lista de Presença Status</b></td>
 			        			</tr>
@@ -67,13 +67,25 @@ if(isset($_GET["action"]))
 				$sub_result = $statement->fetchAll();
 				foreach($sub_result as $sub_row)
 				{
+					switch ($sub_row["attendance_status"]) {
+						case 'Absent':
+							$status = "Falta";
+							break;
+						case 'AbsentJ':
+							$status = "Falta Justificada";
+							break;
+							case 'Present':
+							$status = "Presença";
+							break;
+					}
+
 					$output .= '
 					<tr>
 						<td>'.$sub_row["student_name"].'</td>
 						<td>'.$sub_row["student_roll_number"].'</td>
 						<td>'.$sub_row["grade_name"].'</td>
 						<td>'.$sub_row["teacher_name"].'</td>
-						<td>'.$sub_row["attendance_status"].'</td>
+						<td>'.$status.'</td>
 					</tr>
 					';
 				}
@@ -83,7 +95,7 @@ if(isset($_GET["action"]))
 					</tr>
 				</table><br />';
 			}
-			$file_name = 'Lista de Presença Report.pdf';
+			$file_name = 'Lista de Presença - Relatório.pdf';
 			$pdf->loadHtml($output);
 			$pdf->render();
 			$pdf->stream($file_name, array("Attachment" => false));
@@ -113,18 +125,18 @@ if(isset($_GET["action"]))
 				
 				</style>
 				<p>&nbsp;</p>
-				<h3 align="center">Lista de Presença Report</h3><br /><br />
+				<h3 align="center">Lista de Presença - Relatório</h3><br /><br />
 				<table width="100%" border="0" cellpadding="5" cellspacing="0">
 			        <tr>
 			            <td width="25%"><b>Nome</b></td>
 			            <td width="75%">'.$row["student_name"].'</td>
 			        </tr>
 			        <tr>
-			            <td width="25%"><b>Roll Number</b></td>
+			            <td width="25%"><b>Sexo</b></td>
 			            <td width="75%">'.$row["student_roll_number"].'</td>
 			        </tr>
 			        <tr>
-			            <td width="25%"><b>Grade</b></td>
+			            <td width="25%"><b>Região</b></td>
 			            <td width="75%">'.$row["grade_name"].'</td>
 			        </tr>
 			        <tr>
@@ -155,7 +167,7 @@ if(isset($_GET["action"]))
 					$output .= '
 					<tr>
 						<td>'.$sub_row["attendance_date"].'</td>
-						<td>'.$sub_row["attendance_status"].'</td>
+						<td>'.$status.'</td>
 					</tr>
 					';
 				}
@@ -166,7 +178,7 @@ if(isset($_GET["action"]))
 				</table>
 				';
 
-				$file_name = "Lista de Presença Report.pdf";
+				$file_name = "Lista de Presença - Relatório.pdf";
 				$pdf->loadHtml($output);
 				$pdf->render();
 				$pdf->stream($file_name, array("Attachment" => false));

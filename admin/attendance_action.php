@@ -64,6 +64,10 @@ if(isset($_POST["action"]))
 			{
 				$status = '<label class="badge badge-danger">Falta</label>';
 			}
+			if($row["attendance_status"] == "AbsentJ")
+			{
+				$status = '<label class="badge badge-warning">Falta Justificada</label>';
+			}
 			$sub_array[] = $row["student_name"];
 			$sub_array[] = $row["student_roll_number"];
 			$sub_array[] = $row["grade_name"];
