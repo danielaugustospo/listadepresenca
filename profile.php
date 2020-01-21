@@ -34,7 +34,7 @@ if(isset($_POST["button_action"]))
 		$allowed_extension = array('jpg','png');
 		if(!in_array($extension, $allowed_extension))
 		{
-			$error_teacher_image = "Invalid Image Format";
+			$error_teacher_image = "Formato de imagem inválido!";
 			$error++;
 		}
 		else
@@ -47,7 +47,7 @@ if(isset($_POST["button_action"]))
 
 	if(empty($_POST["teacher_name"]))
 	{
-		$error_teacher_name = "Teacher Name is required";
+		$error_teacher_name = "Nome do Analista Responsável é obrigatório!";
 		$error++;
 	}
 	else
@@ -57,7 +57,7 @@ if(isset($_POST["button_action"]))
 
 	if(empty($_POST["teacher_address"]))
 	{
-		$error_teacher_address = 'Address is required';
+		$error_teacher_address = 'Informe o endereço!';
 		$error++;
 	}
 	else
@@ -67,14 +67,14 @@ if(isset($_POST["button_action"]))
 
 	if(empty($_POST["teacher_emailid"]))
 	{
-		$error_teacher_emailid = "Email Address is required";
+		$error_teacher_emailid = "Informe o email!";
 		$error++;
 	}
 	else
 	{
 		if(!filter_var($_POST["teacher_emailid"], FILTER_VALIDATE_EMAIL))
 		{
-			$error_teacher_emailid = "Invalid email format";
+			$error_teacher_emailid = "Formato de email inválido!";
 			$error;
 		}
 		else
@@ -89,7 +89,7 @@ if(isset($_POST["button_action"]))
 
 	if(empty($_POST["teacher_grade_id"]))
 	{
-		$error_teacher_grade_id = 'Grade is required';
+		$error_teacher_grade_id = 'Informe a região';
 		$error++;
 	}
 	else
@@ -99,7 +99,7 @@ if(isset($_POST["button_action"]))
 
 	if(empty($_POST["teacher_qualification"]))
 	{
-		$error_teacher_qualification = "Qualification Field is required";
+		$error_teacher_qualification = "Informe a posição/qualificação";
 		$error++;
 	}
 	else
@@ -109,7 +109,7 @@ if(isset($_POST["button_action"]))
 
 	if(empty($_POST["teacher_doj"]))
 	{
-		$error_teacher_doj = "Date of Join Field is required";
+		$error_teacher_doj = "Informe a data de início";
 		$error++;
 	}
 	else
@@ -173,7 +173,7 @@ if(isset($_POST["button_action"]))
 		$statement = $connect->prepare($query);
 		if($statement->execute($data))
 		{
-			$success = '<div class="alert alert-success">Perfil Details Change Successfully</div>';
+			$success = '<div class="alert alert-success">Detalhes do perfil alterados com sucesso!</div>';
 		}
 	}
 }

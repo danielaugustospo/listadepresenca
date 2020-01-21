@@ -1,4 +1,3 @@
-<script src="script.js"></script> 
 
 <?php
 
@@ -7,6 +6,7 @@
 include('header.php');
 
 ?>
+
 
 <div class="container" style="margin-top:30px">
   <div class="card">
@@ -97,18 +97,22 @@ $result = $statement->fetchAll();
           <div class="form-group">
             <div class="row">
               <label class="col-md-4 text-right">Data da Lista de Presença <span class="text-danger">*</span></label>
+
               <div class="col-md-8">
                 <input type="text" name="attendance_date" id="attendance_date" class="form-control" readonly />
                 <span id="error_attendance_date" class="text-danger"></span>
               </div>
             </div>
           </div>
+          <label class="col-md-12 text-right" style="color:red;">Não se esqueça de limpar o campo de pesquisa antes de salvar!</label>
+
           <div class="form-group" id="student_details">
             <div class="table-responsive">
+
               <table class="table table-striped table-bordered" id="tabela">
                 <thead>
                   <tr>
-                    <th>Nome <br> <input type="text" id="txtColuna1"/> </th>
+                    <th>Nome </th>
                     <th>Presença</th>
                     <th>Falta</th>
                     <th>Falta Justificada</th>
@@ -199,6 +203,7 @@ $result = $statement->fetchAll();
 $(document).ready(function(){
 	
   var dataTable = $('#attendance_table').DataTable({
+    "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "Listar Todos"]],
     "processing":true,
     "serverSide":true,
     "order":[],
@@ -209,6 +214,15 @@ $(document).ready(function(){
     }
   });
 
+  //chama presenca
+
+$(document).ready(function() {
+    $('#tabela').DataTable( {
+        "paging":   false,
+        "ordering": true,
+        "info":     true
+    } );
+} );
 
   $('#attendance_date').datepicker({
     format:'yyyy-mm-dd',

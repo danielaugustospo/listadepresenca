@@ -135,6 +135,7 @@ include('header.php');
 $(document).ready(function(){
 	
   var dataTable = $('#attendance_table').DataTable({
+    "lengthMenu": [[10, 25, 50, 100, 200, -1], [10, 25, 50, 100, 200, "Listar Todos"]],
     "processing":true,
     "serverSide":true,
     "order":[],
